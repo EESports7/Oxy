@@ -37,8 +37,6 @@ uint32_t deathCount;                               // Contains how many times th
 uint32_t p1InputCount;                             // Shouldn't contain TPS changes, deaths, or physic changes
 uint32_t p2InputCount;                             // Swift clicks count as 2 inputs
 
-std::vector<int32_t> seeds;                        // If there is only one seed, that seed will be use for all attempts
-
 uint32_t bitmask;                                  // Information can be found below
 ```
 
@@ -47,6 +45,7 @@ uint32_t bitmask;                                  // Information can be found b
 This should be the only data compressed if compression is used
 
 ```
+std::vector<int32_t> seeds;                  // If there is only one seed, that seed will be use for all attempts
 std::vector<PlayerPos> playerSpawn;          // First position is the starting position, contains where the player spawns for each attempt on replay
 std::vector<double> tps;                     // First TPS is the starting TPS
 
