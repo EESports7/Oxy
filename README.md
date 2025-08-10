@@ -29,7 +29,7 @@ oxy::SemVer botVersion;                            //
 std::string levelName;                             // 
 uint32_t levelID;                                  // 
 
-uint64_t replayTime;                               // Contains the time it takes to replay the entire macro
+uint64_t replayTime;                               // Contains the time in milliseconds it takes to replay the entire macro
 uint64_t totalFrames;                              // Contains the total amount of frames elapsed
 
 uint32_t deathCount;                               // Contains how many times the intentional death feature is used
