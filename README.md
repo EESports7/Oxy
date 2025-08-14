@@ -21,7 +21,7 @@ std::string macroName;                             //
 std::string macroCreator;                          // 
 std::string macroDescription;                      // Optional
 
-uint32_t gameVersion;                              // 2.2704 -> 22704
+uint32_t gameVersion;                              // 2.2074 -> 22074
 
 std::string botName;                               // 
 oxy::SemVer botVersion;                            // 
