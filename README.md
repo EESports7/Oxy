@@ -5,16 +5,16 @@
 > I might make a FAQ section if I feel the need to.   
 > If you have any questions, feel free to make an issue request.   
 
-This format focuses entirely on size, but the performance isn't *the worse*. This format uses a combination of [Zstandard compression](https://github.com/facebook/zstd), [vu128 variable integers](https://john-millikin.com/vu128-efficient-variable-length-integers), and grouped input types to optimize for size. An added bonus of grouped inputs is the ability to multithread parsing each input in parallel. Ideally, this format **should be implemented along side [Hydro](https://github.com/EESports7/Hydro)** because this format does not save inputs that happen multiple times in a single frame in a lossless manner. (See [this section](https://github.com/EESports7/Oxy/edit/main/README.md#sub-frame-logic) for more info)
+This format focuses entirely on size, but the performance isn't *the worse*. This format uses a combination of [LZMA2 compression](https://en.wikipedia.org/wiki/LZMA#LZMA2_format), [vu128 variable integers](https://john-millikin.com/vu128-efficient-variable-length-integers), and grouped input types to optimize for size. An added bonus of grouped inputs is the ability to multithread parsing each input in parallel. Ideally, this format **should be implemented along side [Hydro](https://github.com/EESports7/Hydro)** because this format does not save inputs that happen multiple times in a single frame in a lossless manner. (See [this section](https://github.com/EESports7/Oxy/edit/main/README.md#sub-frame-logic) for more info)
 ## Structure
 
-Version 1.0.0
+Version 1.1.0
 
 Files should end in ".oxy"
 ### Header (Metadata)
 ```
 std::string magicNumber = "OXYGMD";                // 
-oxy::SemVar oxyVersion = oxy::SemVer(1,0,0);       // 
+oxy::SemVar oxyVersion = oxy::SemVer(1,1,0);       // 
 uint32_t errorCheck;                               // Uses CRC32 on macro data for integrity checks
 
 std::string macroName;                             // 
@@ -88,7 +88,7 @@ std::vector<PhysicsState> player2States;     //
 
 | Size    | Data                                                                             |
 | ------- | -------------------------------------------------------------------------------- |
-| 1 Bit   | Compression Mode (None or Zstandard)                                             |
+| 1 Bit   | Compression Mode (None or LZMA2)                                                 |
 | 2 Bits  | Physics Mode (None, every n frames, every input, or explicitly stated only)      |
 | 1 Bit   | Use Sub-frame Logic (More information below) (Included for parsing optimization) |
 | 1 Bit   | Platform Mode                                                                    |
